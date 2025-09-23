@@ -39,15 +39,14 @@ The calculator goes beyond basic arithmetic — it is designed to be:
 fred-baafi-calculator/
 │
 ├── my_modules/
-│   ├── calculator.js   # math functions
-│   ├── history.js      # save/load history
-│   ├── logger.js       # colored/logging outputs
+│ ├── calculator.js # math functions
+│ ├── history.js # save/load history
+│ ├── logger.js # colored/logging outputs
 │
-├── index.js              # main entry point
+├── index.js # main entry point
 ├── package.json
 ├── .gitignore
 └── README.md
-
 
 ---
 
