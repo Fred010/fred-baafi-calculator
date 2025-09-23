@@ -1,10 +1,19 @@
 // entry point - index.js
 import os from "os";
 import figlet from "figlet";
-import { add, subtract, multiply, divide, square, squareRoot, modulus } from "./task_modules/calculator.js";
+import readlineSync from "readline-sync";
+
+import {
+  add,
+  subtract,
+  multiply,
+  divide,
+  square,
+  squareRoot,
+  modulus,
+} from "./task_modules/calculator.js";
 import { saveToHistory, loadHistory } from "./task_modules/history.js";
 import { logSuccess, logError, logInfo } from "./task_modules/logger.js";
-
 
 // Registration number
 console.log(" Registration ID: BD/2025/TC3/059 ");
@@ -15,40 +24,107 @@ console.log(figlet.textSync("Node Calculator App", { horizontalLayout: "full" })
 // Show system info (use of os module)
 logInfo(`Running on ${os.type()} ${os.release()} | CPU: ${os.cpus()[0].model}`);
 
-// Perform some calculations
-try {
-    let firstResult = add(20, 10);
-    logSuccess(`20 + 10 = ${firstResult}`);
-    saveToHistory(`20 + 10 = ${firstResult}`);
+// Menu options
+const operations = [
+  "Add",
+  "Subtract",
+  "Multiply",
+  "Divide",
+  "Square",
+  "Square Root",
+  "Modulus",
+  "View History",
+  "Quit",
+];
 
-    let secondResult = subtract(50, 15);
-    logSuccess(`50 - 15 = ${secondResult}`);
-    saveToHistory(`50 - 15 = ${secondResult}`);
+// Main loop
+while (true) {
+  const choiceIndex = readlineSync.keyInSelect(operations, "Choose an operation:");
 
-    let thirdResult = multiply(7, 6);
-    logSuccess(`7 * 6 = ${thirdResult}`);
-    saveToHistory(`7 * 6 = ${thirdResult}`);
+  if (choiceIndex === -1 || operations[choiceIndex] === "Quit") {
+    logInfo("Goodbye! Exiting calculator...");
+    break;
+  }
 
-    let fourthResult = divide(45, 9);
-    logSuccess(`45 / 9 = ${fourthResult}`);
-    saveToHistory(`45 / 9 = ${fourthResult}`);
+  const choice = operations[choiceIndex];
 
-    let fifthResult = square(8);
-    logSuccess(`Square of 8 = ${fifthResult}`);
-    saveToHistory(`Square of 8 = ${fifthResult}`);
+  try {
+    let result; // ✅ use let since it will change depending on operation
 
-    let sixthResult = squareRoot(64);
-    logSuccess(`Square root of 64 = ${sixthResult}`);
-    saveToHistory(`Square root of 64 = ${sixthResult}`);
+    switch (choice) {
+      case "Add": {
+        const a = readlineSync.questionInt("Enter first number: ");
+        const b = readlineSync.questionInt("Enter second number: ");
+        result = add(a, b);
+        logSuccess(`${a} + ${b} = ${result}`);
+        saveToHistory(`${a} + ${b} = ${result}`);
+        break;
+      }
 
-    let seventhResult = modulus(29, 5);
-    logSuccess(`29 % 5 = ${seventhResult}`);
-    saveToHistory(`29 % 5 = ${seventhResult}`);
+      case "Subtract": {
+        const a = readlineSync.questionInt("Enter first number: ");
+        const b = readlineSync.questionInt("Enter second number: ");
+        result = subtract(a, b);
+        logSuccess(`${a} - ${b} = ${result}`);
+        saveToHistory(`${a} - ${b} = ${result}`);
+        break;
+      }
 
-} catch (error){
+      case "Multiply": {
+        const a = readlineSync.questionInt("Enter first number: ");
+        const b = readlineSync.questionInt("Enter second number: ");
+        result = multiply(a, b);
+        logSuccess(`${a} * ${b} = ${result}`);
+        saveToHistory(`${a} * ${b} = ${result}`);
+        break;
+      }
+
+      case "Divide": {
+        const a = readlineSync.questionInt("Enter numerator: ");
+        const b = readlineSync.questionInt("Enter denominator: ");
+        result = divide(a, b);
+        logSuccess(`${a} / ${b} = ${result}`);
+        saveToHistory(`${a} / ${b} = ${result}`);
+        break;
+      }
+
+      case "Square": {
+        const a = readlineSync.questionInt("Enter number: ");
+        result = square(a);
+        logSuccess(`Square of ${a} = ${result}`);
+        saveToHistory(`Square of ${a} = ${result}`);
+        break;
+      }
+
+      case "Square Root": {
+        const a = readlineSync.questionInt("Enter number: ");
+        result = squareRoot(a);
+        logSuccess(`Square root of ${a} = ${result}`);
+        saveToHistory(`Square root of ${a} = ${result}`);
+        break;
+      }
+
+      case "Modulus": {
+        const a = readlineSync.questionInt("Enter first number: ");
+        const b = readlineSync.questionInt("Enter second number: ");
+        result = modulus(a, b);
+        logSuccess(`${a} % ${b} = ${result}`);
+        saveToHistory(`${a} % ${b} = ${result}`);
+        break;
+      }
+
+      case "View History": {
+        logInfo("Calculation History:");
+        const history = loadHistory();
+        if (history.length === 0) {
+          logInfo("No calculations yet.");
+        } else {
+          history.forEach((entry) => console.log(entry));
+        }
+        break;
+      }
+    }
+  } catch (error) {
     logError(`Error: ${error.message}`);
+  }
 }
-
-// Load and display history
-logInfo("Calculation History:");
-loadHistory().forEach(entry => console.log(entry));

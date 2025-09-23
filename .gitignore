@@ -1,3 +1,9 @@
 # this should be ignored
 # Node modules
 node_modules/
+
+# gitignore
+.gitignore
+
+# Logs
+history.txt
