@@ -53,63 +53,63 @@ while (true) {
 
     switch (choice) {
       case "Add": {
-        const a = readlineSync.questionInt("Enter first number: ");
-        const b = readlineSync.questionInt("Enter second number: ");
-        result = add(a, b);
-        logSuccess(`${a} + ${b} = ${result}`);
-        saveToHistory(`${a} + ${b} = ${result}`);
+        const i = readlineSync.questionInt("Enter first number: ");
+        const j = readlineSync.questionInt("Enter second number: ");
+        result = add(i, j);
+        logSuccess(`${i} + ${j} = ${result}`);
+        saveToHistory(`${i} + ${j} = ${result}`);
         break;
       }
 
       case "Subtract": {
-        const a = readlineSync.questionInt("Enter first number: ");
-        const b = readlineSync.questionInt("Enter second number: ");
-        result = subtract(a, b);
-        logSuccess(`${a} - ${b} = ${result}`);
-        saveToHistory(`${a} - ${b} = ${result}`);
+        const i = readlineSync.questionInt("Enter first number: ");
+        const j = readlineSync.questionInt("Enter second number: ");
+        result = subtract(i, j);
+        logSuccess(`${i} - ${j} = ${result}`);
+        saveToHistory(`${i} - ${j} = ${result}`);
         break;
       }
 
       case "Multiply": {
-        const a = readlineSync.questionInt("Enter first number: ");
-        const b = readlineSync.questionInt("Enter second number: ");
-        result = multiply(a, b);
-        logSuccess(`${a} * ${b} = ${result}`);
-        saveToHistory(`${a} * ${b} = ${result}`);
+        const i = readlineSync.questionInt("Enter first number: ");
+        const j = readlineSync.questionInt("Enter second number: ");
+        result = multiply(i, j);
+        logSuccess(`${i} * ${j} = ${result}`);
+        saveToHistory(`${i} * ${j} = ${result}`);
         break;
       }
 
       case "Divide": {
-        const a = readlineSync.questionInt("Enter numerator: ");
-        const b = readlineSync.questionInt("Enter denominator: ");
-        result = divide(a, b);
-        logSuccess(`${a} / ${b} = ${result}`);
-        saveToHistory(`${a} / ${b} = ${result}`);
+        const i = readlineSync.questionInt("Enter numerator: ");
+        const j = readlineSync.questionInt("Enter denominator: ");
+        result = divide(i, j);
+        logSuccess(`${i} / ${j} = ${result}`);
+        saveToHistory(`${i} / ${j} = ${result}`);
         break;
       }
 
       case "Square": {
-        const a = readlineSync.questionInt("Enter number: ");
-        result = square(a);
-        logSuccess(`Square of ${a} = ${result}`);
-        saveToHistory(`Square of ${a} = ${result}`);
+        const n = readlineSync.questionInt("Enter number: ");
+        result = square(n);
+        logSuccess(`Square of ${n} = ${result}`);
+        saveToHistory(`Square of ${n} = ${result}`);
         break;
       }
 
       case "Square Root": {
-        const a = readlineSync.questionInt("Enter number: ");
-        result = squareRoot(a);
-        logSuccess(`Square root of ${a} = ${result}`);
-        saveToHistory(`Square root of ${a} = ${result}`);
+        const n = readlineSync.questionInt("Enter number: ");
+        result = squareRoot(n);
+        logSuccess(`Square root of ${n} = ${result}`);
+        saveToHistory(`Square root of ${n} = ${result}`);
         break;
       }
 
       case "Modulus": {
-        const a = readlineSync.questionInt("Enter first number: ");
-        const b = readlineSync.questionInt("Enter second number: ");
-        result = modulus(a, b);
-        logSuccess(`${a} % ${b} = ${result}`);
-        saveToHistory(`${a} % ${b} = ${result}`);
+        const i = readlineSync.questionInt("Enter first number: ");
+        const j = readlineSync.questionInt("Enter second number: ");
+        result = modulus(i, j);
+        logSuccess(`${i} % ${j} = ${result}`);
+        saveToHistory(`${i} % ${j} = ${result}`);
         break;
       }
 
